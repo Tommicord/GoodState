@@ -3,17 +3,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 @theme {
-    --color-primary: #222222;
+    --color-primary: #111111;
     --color-secondary: #191919;
     --color-tertiary: #2d2d2d;
     --color-gr80: #d4d4d4;
     --color-gr60: #2f2f2f;
     --color-gr40: #1a1a1a;
-    --color-gr20: #0d0d0d;
+    --color-gr20: #040404;
     --color-accent: #f04928;
     --color-hover: #ffc09c;
-    --font-ubuntu: 'Ubuntu', sans-serif;
-    --font-roboto: 'Roboto', sans-serif;
+    --font-ubuntu: 'Ubuntu', system-ui, 'sans-serif';
+    --font-roboto: 'Roboto', system-ui, 'sans-serif';
+    --animation-slide-top: slide-top 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 @custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
@@ -25,4 +26,25 @@
         --color-tertiary: rgb(232, 232, 232);
         --color-hover: #e13816;
     }
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-40px);
+            transform: translateY(-40px);
+  }
 }
