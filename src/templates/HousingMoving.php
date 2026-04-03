@@ -2,7 +2,7 @@
 
 include_once "OptimizedImage.php";
 
-const examples = 5;
+const examples = 11;
 const descriptions = [
     "Casa en un barrio tranquilo, ideal para familias.",
     "Apartamento moderno",
@@ -11,8 +11,7 @@ const descriptions = [
     "Casa de clase media",
     "Casa grande en llanuras",
     "Edificio con arquitectura moderna",
-    "Casa con jardín amplio",
-    "Apartamento grande con palmeras",
+    "Cabaña chiquita en un bosque",
     "Casa con bosque privado",
     "Apartamento común y corriente",
     "Casa con piscina y jardín",
@@ -26,7 +25,6 @@ const locations = [
     "Maracaibo,Zulia",
     "Barquisimeto,Lara",
     "Mérida,Mérida",
-    "San Cristóbal,Táchira",
     "Ciudad Guayana,Bolívar",
     "Cumaná,Sucre",
     "Puerto La Cruz,Anzoátegui",
@@ -41,7 +39,6 @@ const prices = [
     "25.000$",
     "40.000$",
     "30.000$",
-    "50.000$",
     "100.000$",
     "200.000$",
     "2.000$",
@@ -101,7 +98,7 @@ function HousingMoving() {
                             src: $v["src"], 
                             alt: $v["description"], 
                             class: "housing-image w-full h-80 saturate-150 object-cover img_$uuid",
-                            style: $current === "false" ? "filter: brightness(60%) blur(2px)" : "",
+                            style: $current === "false" ? "filter: brightness(50%) blur(2px)" : "",
                         ); 
                     ?>
                     <div 

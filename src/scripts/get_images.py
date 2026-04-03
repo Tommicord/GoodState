@@ -18,7 +18,6 @@ def get_options():
 def get_images(
         queries: list[str], 
         captcha_resolution_time: int, 
-        alts: list[str] | list[list[str]],
         loading_time: int = 10,
         output: str = "assets/example/",
     ):
@@ -43,21 +42,8 @@ def get_images(
             print("Loading page...")
             sleep(loading_time)
 
-            tmp_alt = alts[ querie_n ]
-            images = []
-
-            if isinstance(tmp_alt, list):
-                joined = []
-                for alt in tmp_alt:
-                    selector = f"img[alt*='{ alt }' i]"
-                    images = driver.find_elements(By.CSS_SELECTOR, selector)
-                    if images:
-                        joined.extend(images)
-                images = list(set(joined))
-            elif isinstance(tmp_alt, str):
-                selector = f"img[alt*='{ tmp_alt }' i]"
-                images = driver.find_elements(By.CSS_SELECTOR, selector)
-
+            selector = f'img[class="YQ4gaf"]'
+            images = driver.find_elements(By.CSS_SELECTOR, selector)
             print(f"Found {len(images)} images on the page.")
 
             for img in images:
@@ -122,24 +108,16 @@ if __name__ == "__main__":
     QUERIES = [
         "Hermosas casas minimalistas y modernas (imagenes de pexels.com) solo casas",
         "Imágenes de Casas Unsplash con licencia gratuita",
-        "Imágenes de casas Valencia, Venezuela"
-    ]
-    ALTS = [
-        "Fotos y Imágenes de Casa",
-        "Imágenes de Casas",
-        [
-            "casa",
-            "venezuela",
-            "Casas en venta",
-            "Casa en venta", 
-            "Valencia"
-        ]
+        "Imágenes de casas Valencia, Venezuela",
+        "Casas minimalistas y modernas (imagenes de unsplash.com)",
+        "Hermosas casas con jardines unsplash.com",
+        "Imágenes de casas modernas con piscina pexels.com",
+        "Casas de lujo con diseño contemporáneo unsplash.com",
     ]
 
     get_images(
         queries=QUERIES, 
         captcha_resolution_time=CAPTCHA_RESOLUTION_TIME, 
-        alts=ALTS,
         loading_time=10,
         output="assets/result/"
     )
