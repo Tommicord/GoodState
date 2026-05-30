@@ -9,6 +9,8 @@ export async function StartHousingExampleExchanger() {
     }
     const exampleToExchange = examples[Math.floor(n)];
     const dir = "/assets/"
+    const delay = Math.random() * 238; // Magic number, just to make it look more natural
+    await delay(delay);
     exampleToExchange.src = dir + "example-" + Math.ceil(Math.random() * 4) + ".jpg";
-  }, 4300);
+  }, 2300);
 }
