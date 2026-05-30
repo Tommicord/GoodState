@@ -41,9 +41,14 @@
     <div class="spacer w-full h-48"></div>
 
     <section class="w-full h-full flex items-center justify-center p-4">
-        <p class="text-gr80 light:text-gr40">
-            ¡Descubre nuestra selección de viviendas de calidad!
+        <p class="text-4xl font-ubuntu text-gr80 light:text-gr40 font-bold">
+            Descubre nuestra selección de viviendas de calidad
         </p>
+        <div>
+            <p>
+                
+            </p>
+        </div>
     </section>
 </body>
 </html>
