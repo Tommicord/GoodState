@@ -25,24 +25,37 @@ async def describe_images(
     Tu eres un experto en describir imagenes inmobiliarias. 
     Analiza la imagen Y has una descripcion corta en español de la imagen.
     La descripcion debe ser atractiva y debe ser informativa (ej. "Lujosa casa blanca con piscina y bosque"). 
-    La descripcion, titulo debe estar en español, pero la ubicacion debe ser en formato "Ciudad, Estado" y debe ser una ciudad y estado de Venezuela (ej. "Valencia, Carabobo").
+    La descripcion, titulo debe estar en español
+    La descripcion no debe decir donde esta ubicada la casa, ni el precio, ni el numero de habitaciones o baños, solo debe describir la imagen.
     No pongas toda la info solo en la descripcion, ponlo en sus respectivas llaves (ej. "location", "price", etc).
     No añadas informacion de otros campos en la descripcion, solo describe la imagen.
     Responde ÚNICAMENTE un objeto JSON formateado que tenga estas llaves:
     - "title": Un título corto y atractivo para la casa en español.
     - "description": Una frase atractiva sobre la casa en español.
-    - "location": Inventa una ubicación basada en el estilo (ej. "Valencia, Carabobo"). Debe ser el siguiente formato: "Ciudad, Estado". tiene que ser un estado y ciudad de Venezuela.
+    - "location": Inventa una ubicación basada en la imagen (ej. "Valencia, Carabobo"). Debe ser el siguiente formato: "Ciudad, Estado". tiene que ser un estado y ciudad de Venezuela. No solo te limites a poner "Caracas, Distrito Capital", "Maracaibo, Zulia" o "Valencia, Carabobo", puedes inventar otras ciudades y estados de Venezuela, pero siempre deben ser reales (ej. "Barquisimeto, Lara").
     - "price": Inventa un precio lógico en dólares basado en la apariencia (minimo 20000), tiene que ser un número entero (ej: 150000).
     - "bedrooms": Inventa un número lógico de habitaciones basado en la apariencia. SOLO TIENE QUE SER UN NUMERO ENTERO, NO PONGAS "3.5" O "3-4", SOLO UN NUMERO ENTERO.
     - "bathrooms": Inventa un número lógico de baños basado en la apariencia. TIENE QUE SER SOLO UN NUMERO ENTERO, NO PONGAS "2.5" O "2-3", SOLO UN NUMERO ENTERO.
     IMPORTANTE:
     - LA RESPUESTA DEBE COMENZAR CON "{" Y TERMINAR CON "}"
-    - EL SISTEMA FALLARA SI ESCRIBES EN INGLES
+    - SI NO RESPONDES EN ESPAÑOL, EL SISTEMA COLAPSARA
+
+    Ejemplo de respuesta correcta:
+    ```json
+    {
+        "title": "Casa de lujo con piscina y jardín",
+        "description": "Lujosa casa blanca con piscina y jardín en un entorno tranquilo. Ideal para disfrutar del clima tropical venezolano.",
+        "location": "Caracas, Distrito Capital",
+        "price": 250000,
+        "bedrooms": 4,
+        "bathrooms": 3
+    }
+    ```
     """
 
     translator = Translator()
     extensions = ['jpg', 'jpeg', 'png', 'bmp']
-    files = []
+    files: list[Path] = []
     for file in listdir(input_dir):
         if file.lower().endswith( tuple(extensions) ):
             files.append(input_dir / file)
@@ -72,7 +85,6 @@ async def describe_images(
                         "temperature": 0.2, 
                         "num_thread": 4,
                         "num_ctx": 1024,
-                        "low_vram": True,
                     }
                 )
                 print("Original response:", response)
@@ -91,13 +103,14 @@ async def describe_images(
                 
                 print("Output:", res)
                 print("Parsing JSON response...")
-                output = json.loads(res)
+                output: dict = json.loads(res)
                 translations = await translator.translate(
                     [output['title'], output['description']], dest=LANGUAGES['es']
                 ) # Ensure language
                 output['title'] = translations[ 0 ].text
                 output['description'] = translations[ 1 ].text
-                print("Translated: ", pprint(output))
+                output['src'] = str( file )
+                print("Translated: ", output)
                 
                 print("Writing JSON to file...")
                 write_json(output, output_dir / f"{file.stem}_data.json")

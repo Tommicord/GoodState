@@ -2,112 +2,79 @@
 
 include_once "OptimizedImage.php";
 
-const examples = 11;
-const descriptions = [
-    "Casa en un barrio tranquilo, ideal para familias.",
-    "Apartamento moderno",
-    "Casa elegante y minimalista",
-    "Apartamento chiquito pero acogedor",
-    "Casa de clase media",
-    "Casa grande en llanuras",
-    "Edificio con arquitectura moderna",
-    "Cabaña chiquita en un bosque",
-    "Casa con bosque privado",
-    "Apartamento común y corriente",
-    "Casa con piscina y jardín",
-];
-
-const locations = [
-    "Valecia,Carabobo",
-    "Caracas,DC",
-    "Maracay,Aragua",
-    "Valencia,Carabobo",
-    "Maracaibo,Zulia",
-    "Barquisimeto,Lara",
-    "Mérida,Mérida",
-    "Ciudad Guayana,Bolívar",
-    "Cumaná,Sucre",
-    "Puerto La Cruz,Anzoátegui",
-    "Valencia,Carabobo"
-];
-
-const prices = [
-    "5.000$",
-    "30.000$",
-    "50.000$",
-    "15.000$",
-    "25.000$",
-    "40.000$",
-    "30.000$",
-    "100.000$",
-    "200.000$",
-    "2.000$",
-    "20.000$"
-];
-
 function RandomImages() {
-    $dir = "assets/example";
-    $files = [];
-    for($i = 0; $i < examples; $i++) {
-        $files[] = "$dir/$i.jpeg";
+    $dir = "assets/result";
+    $datas = glob("$dir/*_data.json");
+    shuffle($datas);
+    $props = [];
+    for($i = 0; $i < count($datas); $i++) {
+        $content = file_get_contents($datas[ $i ]);
+        $json = json_decode( $content, true );
+        $props[ $i ] = $json;
     }
-    $current = 1;
-    // shuffle($files);
-    $json = [];
-    for($i = 0; $i < examples; $i++) {
-        $json["img_$i"] = [
-            "src" => $files[ $i ],
-            "description" => descriptions[ $i ],
-            "location" => locations[ $i ],
-            "price" => prices[ $i ],
-            "current" => ($i === $current) ? "true" : "false" // This will be used to determine what card is user looking at
-        ];
-    }
-    return $json;
+    return $props;
 }
 
 function HousingMoving() {
-    $json = RandomImages();
+    $full = RandomImages();
+    $json = array_slice( $full, 0, 14 );
 
     ?>
 
     <div class="housing-moving-ctn flex items-center my-10 w-full mx-auto font-ubuntu overflow-hidden relative">
-        <div id="housing-moving" class="flex flex-row gap-4 flex-nowrap transition-all duration-700 ease-in-out" style>
+        <div id="housing-moving" class="flex flex-row gap-4 flex-nowrap transition-all duration-700 ease-in-out" style data-props="<?= htmlspecialchars( json_encode( $full ) ) ?>">
             <?php foreach($json as $i => $v): 
-                $key = $i;
+                $key = "img_$i";
                 $src = $v["src"];
+                $title = $v["title"];
                 $description = $v["description"];
                 $location = $v["location"];
                 $price = $v["price"];
-                $current = $v["current"];
-                $uuid = md5( uniqid( rand() % rand() ) );
+                $current = ( $i === 1 ) ? "true" : "false";
+                $uuid = md5( uniqid( rand() % rand() ) ); // This will be used in JavaScript to identify the divs and change their content
+                $bathrooms = $v["bathrooms"];
+                $bedrooms = $v["bedrooms"];
 
                 ?>
-                <div class="housing-card flex flex-col gap-4 w-170 object-cover" 
+                <div class="housing-card flex flex-col gap-4 w-160 object-cover" 
                      data-key="<?= $key ?>"
                      data-src="<?= $src ?>"
+                     data-title="<?= $title ?>"
                      data-description="<?= $description ?>"
                      data-location="<?= $location ?>"
                      data-price="<?= $price ?>"
                      data-current="<?= $current ?>"
                      data-uuid="<?= $uuid ?>"
+                     data-bathrooms="<?= $bathrooms ?>"
+                     data-bedrooms="<?= $bedrooms ?>"
                     >
 
                     <?php 
                         OptimizedImage(
                             src: $v["src"], 
                             alt: $v["description"], 
-                            class: "housing-image w-full h-80 saturate-150 object-cover img_$uuid",
+                            class: "housing-image w-full h-70 saturate-175 contrast-125 object-cover img_$uuid",
                             style: $current === "false" ? "filter: brightness(50%) blur(2px)" : "",
                         ); 
                     ?>
                     <div 
-                        class="housing-info flex flex-col gap-1 text-gr80"
+                        class="housing-info flex flex-row gap-4 text-gr80 w-full"
                         style="<?= $current === "false" ? "display: none;" : "" ?>"
                     >
-                        <h3 class="housing-title font-bold text-2xl"><?= $description ?></h3>
-                        <p class="housing-location font-medium">Lugar: <?= $location ?></p>
-                        <p class="housing-price font-medium">Precio: <?= $price ?> </p>
+                        <div class="housing-info flex flex-col gap-1 text-gr80 light:text-gr20">
+                            <h4 class="housing-title font-bold text-2xl"><?= $title ?></h4>
+                            <p class="housing-title font-medium max-w-lg"><?= $description ?></p>
+                            <div class="housing-inner flex flex-row gap-8">
+                                <div>
+                                    <p class="housing-location font-medium"><span class="text-orange-400 light:text-orange-600"> Lugar: </span> <?= $location ?></p>
+                                    <p class="housing-price font-medium"><span class="text-orange-400 light:text-orange-600">Precio: </span> <?= $price ?>&dollar; </p>
+                                </div>
+                                <div class="housing-info2 flex flex-col gap-1">
+                                    <p class="housing-bathrooms font-medium"><span class="text-orange-400 light:text-orange-600">Baños: </span> <?= $bathrooms ?></p>
+                                    <p class="housing-bedrooms font-medium"><span class="text-orange-400 light:text-orange-600">Habitaciones: </span> <?= $bedrooms ?></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>

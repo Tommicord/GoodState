@@ -32,7 +32,7 @@ function TemplateHeader() {
                 <?php foreach($links2 as $name => $url) : ?>
 
                     <li>
-                        <a href="<?php echo $url; ?>" class="hover:text-hover transition-colors duration-300">
+                        <a href="<?php echo $url; ?>" class="hover:text-hover transition-colors duration-300" aria-label="<?php echo ucfirst($name); ?>">
                             <?php echo $name; ?>
                         </a>
                     </li>
@@ -40,7 +40,7 @@ function TemplateHeader() {
                 <?php endforeach; ?>
 
                 <li>
-                    <button class="cursor-pointer flex justify-center items-center hover:brightness-150 transition-all duration-300">
+                    <button class="cursor-pointer flex justify-center items-center hover:brightness-150 transition-all duration-300" aria-label="Search" value="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bcbcbc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search light:invert">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -49,7 +49,7 @@ function TemplateHeader() {
                     </button>
                 </li>
                 <li>
-                    <a href="/carrito" class="flex justify-center items-center hover:brightness-150 transition-all duration-300">
+                    <a href="/carrito" class="flex justify-center items-center hover:brightness-150 transition-all duration-300" aria-label="Shopping Cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bcbcbc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart light:invert">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -60,7 +60,7 @@ function TemplateHeader() {
                     </a>
                 </li>
                 <li>
-                    <a href="/perfil" class="flex justify-center items-center hover:brightness-150 transition-all duration-300">
+                    <a href="/perfil" class="flex justify-center items-center hover:brightness-150 transition-all duration-300" aria-label="User Profile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bcbcbc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user light:invert">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />

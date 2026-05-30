@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "gulp": "gulp",
     "dev-php": "php -S localhost:8000",
-    "dev-tw": "tailwindcss -i ./src/styles/app.css -o ./build/css/app.css --watch",
+    "dev-tw": "tailwindcss -i ./src/styles/app.css -o ./build/css/app.css --watch --minify",
     "build": "tailwindcss -i ./src/styles/app.css -o ./build/css/app.css --minify"
   },
   "keywords": [],
@@ -15,8 +16,16 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.2",
     "autoprefixer": "^10.4.27",
+    "gulp-rename": "^2.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-uglify": "^3.0.2",
     "postcss": "^8.5.8",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^4.2.2"
+  },
+  "dependencies": {
+    "gulp": "^5.0.1",
+    "install": "^0.13.0"
   }
 }

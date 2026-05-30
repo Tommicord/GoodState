@@ -4,5 +4,6 @@
     "location": "Caracas, Distrito Capital",
     "price": 250000,
     "bedrooms": 3,
-    "bathrooms": 2
+    "bathrooms": 2,
+    "src": "assets/result/12.jpeg"
 }

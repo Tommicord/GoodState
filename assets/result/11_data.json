@@ -4,5 +4,6 @@
     "location": "Valencia, Carabobo",
     "price": 300000,
     "bedrooms": 4,
-    "bathrooms": 3
+    "bathrooms": 3,
+    "src": "assets/result/11.jpeg"
 }

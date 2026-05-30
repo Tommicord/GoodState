@@ -20,7 +20,7 @@ function HousingExample() {
     OptimizedImage(
         src: $img,
         alt: "Exp Img (Id : $i + 1)",
-        class: "eg-img w-50 h-35 object-cover absolute rounded-lg aspect-video contrast-125 saturate-125 hidden opacity-0 transform-gpu",
+        class: "eg-img$i w-50 h-35 object-cover absolute rounded-lg aspect-video contrast-125 saturate-125 hidden opacity-0 transform-gpu",
         style: $poss[$i]
     );
 
