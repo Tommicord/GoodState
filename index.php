@@ -2,7 +2,12 @@
     include 'src/templates/Head.php';
     include 'src/templates/Header.php';
     include 'src/templates/HousingBanner.php';
-    include 'src/templates/HousingMoving.php'
+    include 'src/templates/HousingMoving.php';
+    include 'src/templates/FeaturedProperties.php';
+    include 'src/templates/ServicesSection.php';
+    include 'src/templates/Testimonials.php';
+    include 'src/templates/CallToAction.php';
+    include 'src/templates/Footer.php';
 ?>
 
 <!DOCTYPE html>
@@ -40,15 +45,14 @@
 
     <div class="spacer w-full h-48"></div>
 
-    <section class="w-full h-full flex items-center justify-center p-4">
-        <p class="text-4xl font-ubuntu text-gr80 light:text-gr40 font-bold">
-            Descubre nuestra selección de viviendas de calidad
-        </p>
-        <div>
-            <p>
-                
-            </p>
-        </div>
-    </section>
+    <?php FeaturedProperties(); ?>
+
+    <?php ServicesSection(); ?>
+
+    <?php Testimonials(); ?>
+
+    <?php CallToAction(); ?>
+
+    <?php TemplateFooter(); ?>
 </body>
 </html>
