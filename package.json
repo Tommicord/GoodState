@@ -7,7 +7,10 @@
     "gulp": "gulp",
     "dev-php": "php -S localhost:8000",
     "dev-tw": "tailwindcss -i ./src/styles/app.css -o ./build/css/app.css --watch --minify",
-    "build": "tailwindcss -i ./src/styles/app.css -o ./build/css/app.css --minify"
+    "build": "tailwindcss -i ./src/styles/app.css -o ./build/css/app.css --minify",
+    "build-ts": "tsc",
+    "watch-ts": "tsc --watch",
+    "dev": "npm run watch-ts & npm run dev-tw"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +18,7 @@
   "type": "module",
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.2",
+    "@types/node": "^26.1.1",
     "autoprefixer": "^10.4.27",
     "gulp-rename": "^2.1.0",
     "gulp-sourcemaps": "^3.0.0",
@@ -22,7 +26,8 @@
     "gulp-uglify": "^3.0.2",
     "postcss": "^8.5.8",
     "postcss-cli": "^11.0.1",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "gulp": "^5.0.1",
