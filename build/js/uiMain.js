@@ -1,5 +1,6 @@
 import { showHousingExamples, startHousingCarousel } from "./uiHousing.js";
 import { startHousingExampleExchanger } from "./uiExampleExchanger.js";
+import { initializeTheme } from "./uiTheme.js";
 /**
  * Main application class that initializes all UI components
  */
@@ -12,6 +13,8 @@ export class App {
      */
     async initialize() {
         try {
+            // Initialize theme system first
+            initializeTheme();
             await startHousingCarousel();
             await startHousingExampleExchanger();
             await showHousingExamples();

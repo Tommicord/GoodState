@@ -11,7 +11,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="es" data-theme="dark" class="scroll-smooth md:scroll-auto scrollbar-thin scrollbar-thumb-gr40 scrollbar-track-gr80">
+<html lang="es" class="scroll-smooth md:scroll-auto scrollbar-thin scrollbar-thumb-gr40 scrollbar-track-gr80">
 <head>
     <?php TemplateHead("Encuentra tu hogar"); ?>
 </head>

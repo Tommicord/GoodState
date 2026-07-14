@@ -65,7 +65,6 @@ export async function startHousingExampleExchanger() {
         nExchange = Math.floor(nExchange);
         const exampleToExchange = examples[nExchange];
         if (!exampleToExchange) {
-            console.warn(`Example image at index ${nExchange} not found`);
             return;
         }
         // Random delay for more natural appearance

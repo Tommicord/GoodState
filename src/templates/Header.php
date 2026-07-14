@@ -46,7 +46,7 @@ function TemplateHeader() {
                 <?php endforeach; ?>
 
                 <li>
-                    <button class="cursor-pointer flex justify-center items-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg hover:bg-gr40 light:hover:bg-gr60 transition-all duration-300" aria-label="Search" value="Search">
+                    <button class="cursor-pointer flex justify-center items-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg hover:bg-gr40 light:hover:bg-gr80 transition-all duration-300" aria-label="Search" value="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gr80 light:text-gr40 hover:text-accent transition-colors duration-300">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -55,7 +55,7 @@ function TemplateHeader() {
                     </button>
                 </li>
                 <li>
-                    <a href="/carrito" class="flex justify-center items-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg hover:bg-gr40 light:hover:bg-gr60 transition-all duration-300" aria-label="Shopping Cart">
+                    <a href="/carrito" class="flex justify-center items-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg hover:bg-gr40 light:hover:bg-gr80 transition-all duration-300" aria-label="Shopping Cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gr80 light:text-gr40 hover:text-accent transition-colors duration-300">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -66,7 +66,7 @@ function TemplateHeader() {
                     </a>
                 </li>
                 <li>
-                    <a href="/perfil" class="flex justify-center items-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg hover:bg-gr40 light:hover:bg-gr60 transition-all duration-300" aria-label="User Profile">
+                    <a href="/perfil" class="flex justify-center items-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg hover:bg-gr40 light:hover:bg-gr80 transition-all duration-300" aria-label="User Profile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gr80 light:text-gr40 hover:text-accent transition-colors duration-300">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -97,14 +97,14 @@ function TemplateHeader() {
                     </a>
                 <?php endforeach; ?>
                 <div class="flex items-center gap-4 pt-2 border-t border-gr40 light:border-gr80">
-                    <button class="cursor-pointer flex justify-center items-center w-9 h-9 rounded-lg hover:bg-gr40 light:hover:bg-gr60 transition-all duration-300" aria-label="Search">
+                    <button class="cursor-pointer flex justify-center items-center w-9 h-9 rounded-lg hover:bg-gr40 light:hover:bg-gr80 transition-all duration-300" aria-label="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gr80 light:text-gr40 hover:text-accent transition-colors duration-300">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
                             <path d="M21 21l-6 -6" />
                         </svg>
                     </button>
-                    <a href="/carrito" class="flex justify-center items-center w-9 h-9 rounded-lg hover:bg-gr40 light:hover:bg-gr60 transition-all duration-300" aria-label="Shopping Cart">
+                    <a href="/carrito" class="flex justify-center items-center w-9 h-9 rounded-lg hover:bg-gr40 light:hover:bg-gr80 transition-all duration-300" aria-label="Shopping Cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gr80 light:text-gr40 hover:text-accent transition-colors duration-300">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />

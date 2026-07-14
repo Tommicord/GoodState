@@ -78,7 +78,6 @@ export async function startHousingExampleExchanger(): Promise<void> {
 
     const exampleToExchange = examples[nExchange];
     if (!exampleToExchange) {
-      console.warn(`Example image at index ${nExchange} not found`);
       return;
     }
 
