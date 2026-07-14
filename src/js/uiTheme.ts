@@ -368,6 +368,15 @@ class DraggableThemeButton {
         this.themeManager.toggleTheme();
       }
     });
+
+    this.button.addEventListener('touchend', (event) => {
+      const timeDiff = Date.now() - mouseDownTime;
+      
+      if (!dragOccurred && timeDiff < 200) {
+        event.preventDefault();
+        this.themeManager.toggleTheme();
+      }
+    });
   }
 
   /**
