@@ -45,30 +45,31 @@ function ServicesSection() {
 
     ?>
 
-    <section class="services-section w-full py-20 bg-black light:bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-ubuntu font-bold text-gr80 light:text-gr20 mb-4">
-                    Nuestros <span class="text-accent">Servicios</span>
+    <section class="services-section w-full py-16 md:py-24 bg-gradient-to-br from-black via-gr95 to-black light:from-white light:via-gr5 light:to-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 bg-accent/10 text-accent rounded-full text-xs md:text-sm font-semibold mb-4">SOLUCIONES</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-ubuntu font-bold text-gr80 light:text-gr20 mb-4">
+                    Nuestros <span class="text-transparent bg-clip-text bg-gradient-to-b from-accent to-orange-500">Servicios</span>
                 </h2>
-                <p class="text-gr40 light:text-gr60 text-lg font-roboto max-w-2xl mx-auto">
+                <p class="text-gr60 light:text-gr40 text-sm md:text-lg font-roboto max-w-2xl mx-auto">
                     Ofrecemos soluciones integrales para todas tus necesidades inmobiliarias con un equipo de profesionales dedicados
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach($services as $index => $service): ?>
-                    <div class="service-card group bg-gr95 light:bg-gr5 p-8 rounded-xl hover:bg-gr90 light:hover:bg-gr10 transition-all duration-300 border border-gr40 light:border-gr80 hover:border-accent">
-                        <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                    <div class="service-card group bg-gr95 light:bg-gr5 p-8 rounded-2xl hover:bg-gr90 light:hover:bg-gr10 transition-all duration-500 border border-gr40 light:border-gr80 hover:border-accent hover:shadow-2xl hover:shadow-accent/10 transform hover:-translate-y-2">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:from-accent group-hover:to-orange-500 transition-all duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:text-white transition-colors duration-500">
                                 <?= $icons[$service["icon"]] ?>
                             </svg>
                         </div>
                         
-                        <h3 class="text-xl font-ubuntu font-bold text-gr80 light:text-gr20 mb-3">
+                        <h3 class="text-xl font-ubuntu font-bold text-gr80 light:text-gr20 mb-3 group-hover:text-accent transition-colors duration-300">
                             <?= $service["title"] ?>
                         </h3>
-                        <p class="text-gr40 light:text-gr60 text-sm font-roboto leading-relaxed">
+                        <p class="text-gr60 light:text-gr40 text-sm font-roboto leading-relaxed">
                             <?= $service["description"] ?>
                         </p>
                     </div>

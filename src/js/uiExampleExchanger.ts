@@ -28,19 +28,20 @@ export async function startHousingExampleExchanger(): Promise<void> {
   const maxRegisteredExchanges = examples.length;
   
   // Track currently used images and exchange positions to avoid duplicates
-  let registeredImages = new Set<number>([1, 2, 3]);
-  let registeredExchanges = new Set<number>([0, 1, 2]);
+  // Using arrays to implement FIFO (First-In-First-Out) behavior
+  let registeredImages: number[] = [1, 2, 3];
+  let registeredExchanges: number[] = [0, 1, 2];
   
   const prefix = "example-";
   const ext = ".jpg";
 
   setInterval(async () => {
-    // Reset sets if they're full to prevent infinite loop
-    if (registeredImages.size >= maxRegisteredImages) {
-      registeredImages.clear();
+    // Remove oldest entry when arrays are full (FIFO)
+    if (registeredImages.length >= maxRegisteredImages) {
+      registeredImages.shift(); // Remove first (oldest) element
     }
-    if (registeredExchanges.size >= maxRegisteredExchanges) {
-      registeredExchanges.clear();
+    if (registeredExchanges.length >= maxRegisteredExchanges) {
+      registeredExchanges.shift(); // Remove first (oldest) element
     }
 
     // Find an unused image number
@@ -53,10 +54,10 @@ export async function startHousingExampleExchanger(): Promise<void> {
       attempts++;
       if (attempts >= maxAttempts) {
         // If we can't find an unused image, reset and try again
-        registeredImages.clear();
+        registeredImages = [];
         attempts = 0;
       }
-    } while (registeredImages.has(nImage) && attempts < maxAttempts);
+    } while (registeredImages.includes(nImage) && attempts < maxAttempts);
 
     // Find an unused exchange position
     let nExchange: number;
@@ -66,10 +67,10 @@ export async function startHousingExampleExchanger(): Promise<void> {
       nExchange = randomInt(0, examples.length - 1);
       attempts++;
       if (attempts >= maxAttempts) {
-        registeredExchanges.clear();
+        registeredExchanges = [];
         attempts = 0;
       }
-    } while (registeredExchanges.has(nExchange) && attempts < maxAttempts);
+    } while (registeredExchanges.includes(nExchange) && attempts < maxAttempts);
 
     // Ensure values are valid
     nImage = nImage < 0 ? 1 : Math.floor(nImage);
@@ -90,7 +91,7 @@ export async function startHousingExampleExchanger(): Promise<void> {
     exampleToExchange.src = newSrc;
 
     // Register this image and exchange position
-    registeredImages.add(nImage);
-    registeredExchanges.add(nExchange);
+    registeredImages.push(nImage);
+    registeredExchanges.push(nExchange);
   }, 2600);
 }

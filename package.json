@@ -10,7 +10,7 @@
     "build": "tailwindcss -i ./src/styles/app.css -o ./build/css/app.css --minify",
     "build-ts": "tsc",
     "watch-ts": "tsc --watch",
-    "dev": "npm run watch-ts & npm run dev-tw"
+    "dev": "npm run watch-ts & npm run dev-tw & npm run dev-php"
   },
   "keywords": [],
   "author": "",

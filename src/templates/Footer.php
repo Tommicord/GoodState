@@ -44,21 +44,21 @@ function TemplateFooter() {
 
     ?>
 
-    <footer class="w-full bg-black light:bg-gr90 border-t border-gr40 light:border-gr80">
-        <div class="container mx-auto px-6 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+    <footer class="w-full light:bg-gr90 light:to-white border-t border-gr40 light:border-gr80">
+        <div class="container mx-auto px-4 md:px-6 py-12 md:py-16">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-12">
                 <!-- Brand Section -->
-                <div class="lg:col-span-1">
-                    <h3 class="text-2xl font-ubuntu font-bold text-white light:text-accent mb-4">
+                <div class="col-span-2 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-2xl md:text-3xl font-ubuntu font-bold text-transparent bg-clip-text bg-linear-to-r from-accent to-orange-500 mb-4">
                         GoodState
                     </h3>
-                    <p class="text-gr40 light:text-gr60 text-sm font-roboto mb-6 leading-relaxed">
+                    <p class="text-gr60 light:text-gr40 text-xs md:text-sm font-roboto mb-4 md:mb-6 leading-relaxed">
                         Tu portal inmobiliario de confianza en Venezuela. Encontramos el hogar perfecto para ti.
                     </p>
-                    <div class="flex gap-4">
+                    <div class="flex gap-2 md:gap-3">
                         <?php foreach($socialLinks as $platform => $url): ?>
-                            <a href="<?php echo $url; ?>" class="w-10 h-10 bg-gr40 light:bg-gr60 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300" aria-label="<?php echo ucfirst($platform); ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white light:text-gr20">
+                            <a href="<?php echo $url; ?>" class="w-8 h-8 md:w-12 md:h-12 bg-accent rounded-xl flex items-center justify-center" aria-label="<?php echo ucfirst($platform); ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white light:text-gr20">
                                     <?php echo $socialIcons[$platform]; ?>
                                 </svg>
                             </a>
@@ -66,16 +66,17 @@ function TemplateFooter() {
                     </div>
                 </div>
 
-                <!-- Link Sections -->
                 <?php foreach($footerLinks as $category => $links): ?>
                     <div>
-                        <h4 class="text-lg font-ubuntu font-bold text-white light:text-gr20 mb-4">
+                        <h4 class="text-base md:text-lg font-ubuntu font-bold text-white light:text-gr20 mb-3 md:mb-4 group">
                             <?php echo $category; ?>
+                            <span class="block h-0.5 w-0 bg-accent group-hover:w-full transition-all duration-300"></span>
                         </h4>
-                        <ul class="space-y-3">
+                        <ul class="space-y-2 md:space-y-3">
                             <?php foreach($links as $name => $url): ?>
                                 <li>
-                                    <a href="<?php echo $url; ?>" class="text-gr40 light:text-gr60 text-sm font-roboto hover:text-accent transition-colors duration-300">
+                                    <a href="<?php echo $url; ?>" class="text-gr60 light:text-gr40 text-xs md:text-sm font-roboto hover:text-accent transition-colors duration-300 inline-flex items-center gap-1">
+                                        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
                                         <?php echo $name; ?>
                                     </a>
                                 </li>
@@ -86,52 +87,52 @@ function TemplateFooter() {
             </div>
 
             <!-- Contact Info -->
-            <div class="mt-12 pt-8 border-t border-gr40 light:border-gr80">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+            <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gr40 light:border-gr80">
+                <div class="grid grid-cols-3 gap-6 md:gap-3">
+                    <div class="flex items-start gap-3 md:gap-4 group">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                         </div>
                         <div>
-                            <h5 class="text-white light:text-gr20 font-bold font-ubuntu mb-1">Ubicación</h5>
-                            <p class="text-gr40 light:text-gr60 text-sm font-roboto">Caracas, Venezuela</p>
+                            <h5 class="text-white light:text-gr20 font-bold font-ubuntu mb-1 text-sm md:text-base">Ubicación</h5>
+                            <p class="text-gr60 light:text-gr40 text-xs md:text-sm font-roboto">Caracas, Venezuela</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                    <div class="flex items-start gap-3 md:gap-4 group">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
                         </div>
                         <div>
-                            <h5 class="text-white light:text-gr20 font-bold font-ubuntu mb-1">Teléfono</h5>
-                            <p class="text-gr40 light:text-gr60 text-sm font-roboto">+58 212 123 4567</p>
+                            <h5 class="text-white light:text-gr20 font-bold font-ubuntu mb-1 text-sm md:text-base">Teléfono</h5>
+                            <p class="text-gr60 light:text-gr40 text-xs md:text-sm font-roboto">+58 0414 411-4289</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                    <div class="flex items-start gap-3 md:gap-4 group">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
+                                <polyline points="22,6 12 13 2,6"></polyline>
                             </svg>
                         </div>
                         <div>
-                            <h5 class="text-white light:text-gr20 font-bold font-ubuntu mb-1">Email</h5>
-                            <p class="text-gr40 light:text-gr60 text-sm font-roboto">info@goodstate.ve</p>
+                            <h5 class="text-white light:text-gr20 font-bold font-ubuntu mb-1 text-sm md:text-base">Email</h5>
+                            <p class="text-gr60 light:text-gr40 text-xs md:text-sm font-roboto">info@goodstate.ve</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Copyright -->
-            <div class="mt-12 pt-8 border-t border-gr40 light:border-gr80 text-center">
-                <p class="text-gr40 light:text-gr60 text-sm font-roboto">
-                    © <?php echo date('Y'); ?> GoodState. Todos los derechos reservados.
+            <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gr40 light:border-gr80 text-center">
+                <p class="text-gr60 light:text-gr40 text-xs md:text-sm font-roboto">
+                    <span class="text-accent font-bold">© <?php echo date('Y'); ?> GoodState.</span> Todos los derechos reservados.
                 </p>
             </div>
         </div>

@@ -36,7 +36,7 @@ function HousingMoving() {
                 $bedrooms = $v["bedrooms"];
 
                 ?>
-                <div class="housing-card flex flex-col gap-4 w-160 object-cover" 
+                <div class="housing-card flex flex-col gap-4 w-80 md:w-96 lg:w-160 object-cover flex-shrink-0" 
                      data-key="<?= $key ?>"
                      data-src="<?= $src ?>"
                      data-title="<?= $title ?>"
@@ -53,7 +53,7 @@ function HousingMoving() {
                         OptimizedImage(
                             src: $v["src"], 
                             alt: $v["description"], 
-                            class: "housing-image w-full h-70 saturate-175 contrast-125 object-cover img_$uuid",
+                            class: "housing-image w-full h-48 md:h-56 lg:h-70 saturate-175 contrast-125 object-cover img_$uuid",
                             style: $current === "false" ? "filter: brightness(50%) blur(2px)" : "",
                         ); 
                     ?>
@@ -62,16 +62,16 @@ function HousingMoving() {
                         style="<?= $current === "false" ? "display: none;" : "" ?>"
                     >
                         <div class="housing-info flex flex-col gap-1 text-gr80 light:text-gr20">
-                            <h4 class="housing-title font-bold text-2xl"><?= $title ?></h4>
-                            <p class="housing-title font-medium max-w-lg"><?= $description ?></p>
-                            <div class="housing-inner flex flex-row gap-8">
+                            <h4 class="housing-title font-bold text-lg md:text-xl lg:text-2xl"><?= $title ?></h4>
+                            <p class="housing-title font-medium max-w-lg text-sm md:text-base"><?= $description ?></p>
+                            <div class="housing-inner flex flex-row gap-4 md:gap-8">
                                 <div>
-                                    <p class="housing-location font-medium"><span class="text-orange-400 light:text-orange-600"> Lugar: </span> <?= $location ?></p>
-                                    <p class="housing-price font-medium"><span class="text-orange-400 light:text-orange-600">Precio: </span> <?= $price ?>&dollar; </p>
+                                    <p class="housing-location font-medium text-sm md:text-base"><span class="text-orange-400 light:text-orange-600"> Lugar: </span> <?= $location ?></p>
+                                    <p class="housing-price font-medium text-sm md:text-base"><span class="text-orange-400 light:text-orange-600">Precio: </span> <?= $price ?>&dollar; </p>
                                 </div>
                                 <div class="housing-info2 flex flex-col gap-1">
-                                    <p class="housing-bathrooms font-medium"><span class="text-orange-400 light:text-orange-600">Baños: </span> <?= $bathrooms ?></p>
-                                    <p class="housing-bedrooms font-medium"><span class="text-orange-400 light:text-orange-600">Habitaciones: </span> <?= $bedrooms ?></p>
+                                    <p class="housing-bathrooms font-medium text-sm md:text-base"><span class="text-orange-400 light:text-orange-600">Baños: </span> <?= $bathrooms ?></p>
+                                    <p class="housing-bedrooms font-medium text-sm md:text-base"><span class="text-orange-400 light:text-orange-600">Habitaciones: </span> <?= $bedrooms ?></p>
                                 </div>
                             </div>
                         </div>
